@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="show-p">00:00:00</p>
+  <button class="btn" onclick="javascript:fn()">start</button>
+</body>
+<script>
+  const p = document.querySelector(".show-p")
+  const btn = document.querySelector(".btn")
+  let falg = false
+  var a 
+  function time(){
+       a = setTimeout(()=>{
+        const timestr = new Date()
+        p.innerHTML= timestr.toLocaleString()
+        time()
+      },1000)  
+  }
+  function cleartime(){
+    if(a != null){
+      clearTimeout(a)
+    }
+    
+  }
+  function fn(){
+    if(falg){
+      cleartime()
+      falg = false
+      btn.innerHTML = 'start'
+      console.log(falg)
+    }else{
+      time()
+      falg = true
+      btn.innerHTML = 'stop'
+      console.log(falg)
+    }
+  }
+</script>
+</html>
